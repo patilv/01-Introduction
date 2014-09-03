@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Data Visualization and R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Data Visualization and R">
+  <meta name="author" content="Vivek Patil">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/mycustom.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Data Visualization and R</h1>
+    <h2>Fall 2014</h2>
+    <p>Vivek Patil<br/>Associate Professor of Marketing</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Quantitative Information</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Numbers Don&#39;t Speak for Themselves - Need to be appropriately displayed</li>
+<li>Reduces (at times, eliminates) guesswork, assumptions, gut instinct, intuition, and bias</li>
+<li>Poor charts/graphs/tables are commonplace</li>
+<li>No training</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>What is Visualization?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong><a href="http://eagereyes.org/criticism/definition-of-visualization">Kosara</a></strong></p>
+
+<ol>
+<li>Based on non-visual data (not from pictures or image processing) - transforms invisible to visible</li>
+<li>Should produce an image/object that communicates predominantly visually</li>
+<li>Must be readable and recognizable- must provide a way to learn something about the data</li>
+</ol>
+
+<p><em>Few</em> : Quantitative displays to <em>[P]rovide reader with important, meaningful, and useful insight.</em> <br></p>
+
+<p><em>Tufte</em> : Should serve a clear purpose - description, exploration, tabulation, or decoration</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Why bother with graphs when we have stats? - Anscombe&#39;s Quartet</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.1 by xtable 1.7-3 package -->
+
+<!-- Tue Sep 02 17:09:32 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> x1 </TH> <TH> y1 </TH> <TH> x2 </TH> <TH> y2 </TH> <TH> x3 </TH> <TH> y3 </TH> <TH> x4 </TH> <TH> y4 </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD align="right"> 10.00 </TD> <TD align="right"> 8.04 </TD> <TD align="right"> 10.00 </TD> <TD align="right"> 9.14 </TD> <TD align="right"> 10.00 </TD> <TD align="right"> 7.46 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 6.58 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 6.95 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 8.14 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 6.77 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 5.76 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD align="right"> 13.00 </TD> <TD align="right"> 7.58 </TD> <TD align="right"> 13.00 </TD> <TD align="right"> 8.74 </TD> <TD align="right"> 13.00 </TD> <TD align="right"> 12.74 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 7.71 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 8.81 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 8.77 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 7.11 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 8.84 </TD> </TR>
+  <TR> <TD align="right"> 5 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 8.33 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 9.26 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 7.81 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 8.47 </TD> </TR>
+  <TR> <TD align="right"> 6 </TD> <TD align="right"> 14.00 </TD> <TD align="right"> 9.96 </TD> <TD align="right"> 14.00 </TD> <TD align="right"> 8.10 </TD> <TD align="right"> 14.00 </TD> <TD align="right"> 8.84 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 7.04 </TD> </TR>
+  <TR> <TD align="right"> 7 </TD> <TD align="right"> 6.00 </TD> <TD align="right"> 7.24 </TD> <TD align="right"> 6.00 </TD> <TD align="right"> 6.13 </TD> <TD align="right"> 6.00 </TD> <TD align="right"> 6.08 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 5.25 </TD> </TR>
+  <TR> <TD align="right"> 8 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 4.26 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 3.10 </TD> <TD align="right"> 4.00 </TD> <TD align="right"> 5.39 </TD> <TD align="right"> 19.00 </TD> <TD align="right"> 12.50 </TD> </TR>
+  <TR> <TD align="right"> 9 </TD> <TD align="right"> 12.00 </TD> <TD align="right"> 10.84 </TD> <TD align="right"> 12.00 </TD> <TD align="right"> 9.13 </TD> <TD align="right"> 12.00 </TD> <TD align="right"> 8.15 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 5.56 </TD> </TR>
+  <TR> <TD align="right"> 10 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 4.82 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 7.26 </TD> <TD align="right"> 7.00 </TD> <TD align="right"> 6.42 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 7.91 </TD> </TR>
+  <TR> <TD align="right"> 11 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 5.68 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 4.74 </TD> <TD align="right"> 5.00 </TD> <TD align="right"> 5.73 </TD> <TD align="right"> 8.00 </TD> <TD align="right"> 6.89 </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Anscombe&#39;s Quartet - Statistics</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.1 by xtable 1.7-3 package -->
+
+<!-- Tue Sep 02 17:09:32 2014 -->
+
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> datasource </TH> <TH> x-mean </TH> <TH> y-mean </TH> <TH> x-variance </TH> <TH> y-variance </TH> <TH> correlation-xy </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD align="right">   1 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 7.50 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 4.13 </TD> <TD align="right"> 0.82 </TD> </TR>
+  <TR> <TD align="right"> 2 </TD> <TD align="right">   2 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 7.50 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 4.13 </TD> <TD align="right"> 0.82 </TD> </TR>
+  <TR> <TD align="right"> 3 </TD> <TD align="right">   3 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 7.50 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 4.12 </TD> <TD align="right"> 0.82 </TD> </TR>
+  <TR> <TD align="right"> 4 </TD> <TD align="right">   4 </TD> <TD align="right"> 9.00 </TD> <TD align="right"> 7.50 </TD> <TD align="right"> 11.00 </TD> <TD align="right"> 4.12 </TD> <TD align="right"> 0.82 </TD> </TR>
+   </TABLE>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Anscombe&#39;s Quartet - Graphs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Why bother about visualizations today?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src= "dashboard-snockered-624x418.png" alt= "BigDataVis" title="BigDataVis" > </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Why bother about visualizations today?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Rise in Data-analysis Driven Journalism</p>
+
+<ul>
+<li>ESPN backed: <strong>FiveThirtyEight.com</strong>: Nate Silver (previously NYTimes)</li>
+<li>New York Times&#39; <strong>The Upshot</strong> - David Leonhardt</li>
+<li>Vox media&#39;s <strong>Vox.com</strong> - Ezra Klein (WaPo), Matt Yglesias (slate.com)</li>
+<li><strong>Guardian&#39;s</strong> data blog</li>
+<li>The Wall Street Journal </li>
+<li>The Washington Post</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Why bother about visualizations today?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src= "funvis.jpg" alt= "BigDataVis" title="BigDataVis" > </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Why bother about visualizations today?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src= "convincing.png" alt= "BigDataVis" title="BigDataVis" > </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Why bother about visualizations today?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src= "Outlier.jpg" alt= "BigDataVis" title="BigDataVis" > </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>What is R?</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th><img src= "assets/img/jchambers.jpg" alt= "John Chambers" title="John Chambers" width= "200" height = "200" ></th>
+<th><img src="assets/img/small-ihaka.gif" alt= "Ross Ihaka" title="Ross Ihaka" width= "200" height = "200"></th>
+<th><img src="assets/img/small-robert.gif" alt="Robert Gentleman" title="Robert Gentleman"width= "200" height = "200" ></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<ol>
+<li>A language and an environment for statistical computing and graphics</li>
+<li>Based on <strong>S</strong> - now owned by TIBCO </li>
+<li>Elegance - Language for statisticians by statisticians</li>
+</ol>
+
+<p><a href="http://www.r-project.org" target="_blank"><img src="assets/img/Rlogo.jpg" alt="R" title="R"width= "70" height = "70" ></a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Pluses</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Free and Open Source -No reinvention of wheel and tinkering opportunities</li>
+<li>Coding in R - Reproducibility </li>
+<li>Routines generally appear in R before any other statistical system</li>
+</ol>
+
+<p><center><img src="assets/img/fig_10_cran1.png" alt="http://r4stats.com/2013/03/19/r-2012-growth-exceeds-sas-all-time-total/" title= "http://r4stats.com/2013/03/19/r-2012-growth-exceeds-sas-all-time-total/" width= "400" height = "300" ></center>
+Source: <a href="http://r4stats.com/articles/popularity/">Muenchen, Robert A, The Popularity of Data Analysis Software.</a>, Retrieved 8/15/2013</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Pluses Continued...</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Graphics - Great.... to ....Mindblowing</li>
+<li>Excellent package distribution system - Internet</li>
+<li>Compatible with most flavors of Unix, Mac OSX, and Windows</li>
+<li>Connectivity with database systems, import from different data formats</li>
+<li>Community support is outstanding - user-base estimates of 250,000-2 million</li>
+</ol>
+
+<p><a href= "http://www.nytimes.com/2009/01/07/technology/business-computing/07program.html" target= "_blank"> Ashlee Vance&#39;s NY Times story of 2009</a></small></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Limitations</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Command line interface </li>
+<li>Help - IDEs: R Studio, Revolution Analytics and - GUI: Deducer and R Commander</li>
+<li>Provides complete control over what happens but the learning curve could be steep</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Other Softwares - (SPSS, SAS, Stata,...)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Proprietory softwares, functions</li>
+<li>Algorithms developed for users - tinkering/customization ability limited</li>
+<li>Rectangular datasets and one at a time </li>
+<li>Expensive and costs escalate for additional options </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>R versus Others</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Rexer Analytics survey<img src= "assets/img/rexeranalytics2013.png" width="450" height="350"></th>
+<th>2013 KD Nuggets Poll<img src="assets/img/kdnuggets2013.png" width= "450" height = "350" ></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p>Source: <a href="http://r4stats.com/articles/popularity/">Muenchen, Robert A, The Popularity of Data Analysis Software.</a>, Retrieved 9/1/2014 </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>R versus Others</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th><img src= "assets/img/fig_1c_forum_groups.png" alt= "Number of people in Groups" width= "450" height = "375" ></th>
+<th><img src="assets/img/payscale.png" width= "450" alt= "payscale" height = "375"></td></th>
+</tr>
+</thead><tbody>
+</tbody></table>
+
+<p><supersub> Source: <a href="http://r4stats.com/articles/popularity/">Muenchen, Robert A, The Popularity of Data Analysis Software.</a>, Retrieved 9/1/2014 </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>R Packages in Different Fields</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://cran.r-project.org/web/views/" style="min-height: 700px; min-width: 950px;"></iframe>
+
+<p>Source: From the R Project site</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>My website/blog</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://patilv.github.io">http://patilv.github.io</a></li>
+<li>Topics of discussion include healthcare, sports, education, and crime, among others</li>
+<li>2 Posts listed by ComputerWorld magazine as top resources for R statistical programming environment</li>
+<li>An invited post on kdnuggets.com </li>
+<li>A post on NCAA college finances sought by collegeathleticsclips.com</li>
+<li>Visualizations have appeared on si.com</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>NCAA Basketball- Gonzaga Bulldogs versus Kansas Jayhawks -PPG</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/2schoolskdf.png"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Textual Data - Titles of 1755 TED Talks</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/tedwordcloud.png"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Superbowl appearances - Wins and Losses</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://bl.ocks.org/patilv/raw/c2d199103dfd346380c4/" width=800 height=600> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Medicare Provider Charges in Spokane</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://glimmer.rstudio.com/vivekpatil/interactivemed/" width=800 height=600> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Enrollments in Modern languages</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://bl.ocks.org/patilv/raw/353108ff4913894d708b/" width=800 height=600> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Violent Crime Rates Across 5 Decades</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://patilv.github.io/choroplethanimation/decadeplots.html" width=800 height=600> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Campus Security</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="http://bl.ocks.org/patilv/raw/8148002/" width=800 height=600> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>2014 US Open Nationality of Players</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/playernationalitymap.png" width=900 height=700></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>A Recently Released Video on R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>From Revolution Analytics <br><br>
+<center></p>
+
+<iframe width="640" height="360" src="http://www.youtube.com/embed/TR2bHSJ_eck?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Welcome to the Journey</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Read and summarize articles on &quot;Perception and Graph Types&quot;: <a href="http://bit.ly/gudataviz">http://bit.ly/gudataviz</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Quantitative Information'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What is Visualization?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Why bother with graphs when we have stats? - Anscombe&#39;s Quartet'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Anscombe&#39;s Quartet - Statistics'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Anscombe&#39;s Quartet - Graphs'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Why bother about visualizations today?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Why bother about visualizations today?'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Why bother about visualizations today?'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Why bother about visualizations today?'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Why bother about visualizations today?'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='What is R?'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Pluses'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Pluses Continued...'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Limitations'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Other Softwares - (SPSS, SAS, Stata,...)'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='R versus Others'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='R versus Others'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='R Packages in Different Fields'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='My website/blog'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='NCAA Basketball- Gonzaga Bulldogs versus Kansas Jayhawks -PPG'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Textual Data - Titles of 1755 TED Talks'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Superbowl appearances - Wins and Losses'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Medicare Provider Charges in Spokane'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Enrollments in Modern languages'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Violent Crime Rates Across 5 Decades'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Campus Security'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='2014 US Open Nationality of Players'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='A Recently Released Video on R'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Welcome to the Journey'>
+         29
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
